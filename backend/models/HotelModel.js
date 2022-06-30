@@ -50,4 +50,5 @@ const HotelSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("HotelModel", HotelSchema);
+// "Hotel" this name will show in the database collection
+module.exports = mongoose.model("Hotel", HotelSchema);
