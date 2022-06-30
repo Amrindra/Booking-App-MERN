@@ -28,6 +28,10 @@ const HotelSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
+  title: {
+    type: String,
+    require: true,
+  },
   rating: {
     type: Number,
     min: 0,
@@ -46,4 +50,4 @@ const HotelSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Hotel", HotelSchema);
+module.exports = mongoose.model("HotelModel", HotelSchema);

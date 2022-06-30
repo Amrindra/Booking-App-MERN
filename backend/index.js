@@ -30,6 +30,10 @@ mongoose.connection.on("connected", () => {
 });
 
 // Middlewares
+
+//if we don't use express.json we won't be able to send post request
+app.use(express.json());
+
 app.use("/api/auth", authRoute);
 app.use("/api/users", usersRoute);
 app.use("/api/hotels", hotelsRoute);
