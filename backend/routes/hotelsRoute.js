@@ -19,11 +19,45 @@ router.post("/", async (req, res) => {
 // UPDATE
 router.put("/:id", async (req, res) => {
   try {
+    //findByIdAndUpdate in the HotelModel
     //We have to pass {$set: req.body} as object to update which take req.body where we're going to update
-    const updatedHotel = await HotelModel.findByIdAndUpdate(req.params.id, {
-      $set: req.body,
-    });
-    res.status(200).json(savedHotel);
+    //and we have to pass {new: true} because findByIdAndUpdate return the previous ducument not the updated ones
+    const updatedHotel = await HotelModel.findByIdAndUpdate(
+      req.params.id,
+      { $set: req.body },
+      { new: true }
+    );
+    res.status(200).json(updatedHotel);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+// DELETE
+router.delete("/:id", async (req, res) => {
+  try {
+    await HotelModel.findByIdAndDelete(req.params.id);
+    res.status(200).json("Hotel has been deleted!");
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+// GET SPECIFIC HOTEL
+router.get("/:id", async (req, res) => {
+  try {
+    const hotel = await HotelModel.findById(req.params.id);
+    res.status(200).json(hotel);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+//GET ALL
+router.get("/", async (req, res) => {
+  try {
+    const allHotels = await HotelModel.find();
+    res.status(200).json(allHotels);
   } catch (error) {
     res.status(500).json(error);
   }
