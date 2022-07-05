@@ -54,12 +54,13 @@ router.get("/:id", async (req, res) => {
 });
 
 //GET ALL
-router.get("/", async (req, res) => {
+//Used next middleware so that we can customize our error messages
+router.get("/", async (req, res, next) => {
   try {
     const allHotels = await HotelModel.find();
     res.status(200).json(allHotels);
   } catch (error) {
-    res.status(500).json(error);
+    next(error);
   }
 });
 
