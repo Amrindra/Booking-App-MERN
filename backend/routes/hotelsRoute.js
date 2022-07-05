@@ -1,5 +1,6 @@
 const express = require("express");
 const HotelModel = require("../models/HotelModel.js");
+const createError = require("../utils/error.js");
 
 const router = express.Router();
 
@@ -56,8 +57,11 @@ router.get("/:id", async (req, res) => {
 //GET ALL
 //Used next middleware so that we can customize our error messages
 router.get("/", async (req, res, next) => {
+  const failed = true;
+  // createError is a custom function we created in Util folder
+  if (failed) return next(createError(404, "You are not authenticated!"));
   try {
-    const allHotels = await HotelModel.find();
+    const allHotels = await HotelModel.findById("dkfjadf");
     res.status(200).json(allHotels);
   } catch (error) {
     next(error);
