@@ -29,7 +29,9 @@ const login = async (req, res, next) => {
     const currentUser = await UserModel.findOne({
       username: req.body.username,
     });
-    if (!currentUser) return next(createError(404, "User not found"));
+    if (!currentUser) {
+      return next(createError(404, "User not found"));
+    }
 
     //Comparing the password from user types in and password in the database
     //If it doesn't match send error message, if it does send that user
@@ -40,7 +42,10 @@ const login = async (req, res, next) => {
     if (!checkingPassword)
       return next(createError(400, "Wrong password or username!"));
 
-    res.status(200).json(currentUser);
+    //Extracting the password and isAdmin out and send only the rest of data to the user request
+    const { password, isAdmin, ...others } = currentUser._doc;
+
+    res.status(200).json({ ...others });
   } catch (error) {
     next(error);
   }
