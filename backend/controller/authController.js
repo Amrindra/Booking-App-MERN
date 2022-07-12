@@ -52,8 +52,8 @@ const login = async (req, res, next) => {
     //By doing this it's saver because we don't send password to the client side
     const { password, isAdmin, ...others } = currentUser._doc;
 
+    //By doing this it won't allow client secret to reach this cookie and it's much more secure
     res
-      //By doing this it won't allow client secret to reach this cookie and it's much more secure
       .cookie("access_token", token, {
         httpOnly: true,
       })
