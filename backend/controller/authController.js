@@ -1,6 +1,7 @@
 const UserModel = require("../models/UserModel.js");
 const bcrypt = require("bcryptjs");
 const createError = require("../utils/error.js");
+const jwt = require("jsonwebtoken");
 
 //Register
 const register = async (req, res, next) => {
@@ -42,7 +43,13 @@ const login = async (req, res, next) => {
     if (!checkingPassword)
       return next(createError(400, "Wrong password or username!"));
 
+    const token = jwt.sign(
+      { id: currentUser._id, isAdmin: user._isAdmin },
+      process.env.JWT_TOKEN
+    );
+
     //Extracting the password and isAdmin out and send only the rest of data to the user request
+    //By doing this it's saver because we don't send password to the client side
     const { password, isAdmin, ...others } = currentUser._doc;
 
     res.status(200).json({ ...others });
