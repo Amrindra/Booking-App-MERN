@@ -44,7 +44,7 @@ const login = async (req, res, next) => {
       return next(createError(400, "Wrong password or username!"));
 
     const token = jwt.sign(
-      { id: currentUser._id, isAdmin: currentUser._isAdmin },
+      { id: currentUser._id, isAdmin: currentUser.isAdmin },
       process.env.JWT_TOKEN
     );
 
@@ -55,7 +55,7 @@ const login = async (req, res, next) => {
     //By doing this it won't allow client secret to reach this cookie and it's much more secure
     res
       .cookie("access_token", token, {
-        httpOnly: true,
+        HttpOnly: true,
       })
       .status(200)
       .json({ ...others });

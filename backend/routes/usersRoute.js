@@ -6,8 +6,14 @@ const {
   getUser,
   getAllUsers,
 } = require("../controller/userController");
+const verifyToken = require("../utils/verifyToken");
 
 const router = express.Router();
+
+router.get("/checkauthentication", verifyToken, (req, res, next) => {
+  res.send("User logged in");
+});
+
 // CREATE
 // The reason why we used async here just because we will connect to DB and it will take time to connect, therefore, async helps in this case
 router.post("/", createUser);
