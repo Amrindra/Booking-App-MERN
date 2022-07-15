@@ -6,12 +6,17 @@ const {
   getUser,
   getAllUsers,
 } = require("../controller/userController");
-const verifyToken = require("../utils/verifyToken");
+const { verifyToken, verifyUser } = require("../utils/verifyToken");
 
 const router = express.Router();
 
+//Passing verifyToken to check to see if the user is authenticated
 router.get("/checkauthentication", verifyToken, (req, res, next) => {
   res.send("User logged in");
+});
+
+router.get("/checkuser/:id", verifyUser, (req, res, next) => {
+  res.send("User logged in. You can delete your account");
 });
 
 // CREATE

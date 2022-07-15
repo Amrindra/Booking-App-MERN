@@ -16,4 +16,17 @@ const verifyToken = (req, res, next) => {
   });
 };
 
-module.exports = verifyToken;
+const verifyUser = (req, res, next) => {
+  //Passing the verifyToken first to check the user authentication
+  verifyToken(req, res, () => {
+    //Checking the id if it's equal to each other and give an access/permission to admin as well
+    //req.user.id is from JWT token and req.params.id is from the user id. THis is for checking the ownership and give access to the right user
+    if (req.user.id === req.params.id || req.user.isAdmin) {
+      next();
+    } else {
+      return next(createError(403, "You are not authorized!"));
+    }
+  });
+};
+
+module.exports = { verifyToken, verifyUser };
