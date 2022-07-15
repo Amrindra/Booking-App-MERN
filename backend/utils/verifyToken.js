@@ -16,6 +16,18 @@ const verifyToken = (req, res, next) => {
   });
 };
 
+const verifyAdmin = (req, res, next) => {
+  //Passing the verifyToken first to check the user is admin
+  verifyToken(req, res, () => {
+    //Checking the id if it's admin
+    if (req.user.isAdmin) {
+      next();
+    } else {
+      return next(createError(403, "You are not authorized! Only Admin"));
+    }
+  });
+};
+
 const verifyUser = (req, res, next) => {
   //Passing the verifyToken first to check the user authentication
   verifyToken(req, res, () => {
@@ -29,4 +41,4 @@ const verifyUser = (req, res, next) => {
   });
 };
 
-module.exports = { verifyToken, verifyUser };
+module.exports = { verifyToken, verifyUser, verifyAdmin };
