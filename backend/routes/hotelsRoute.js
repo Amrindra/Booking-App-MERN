@@ -8,18 +8,19 @@ const {
 } = require("../controller/hotelController.js");
 const HotelModel = require("../models/HotelModel.js");
 const createError = require("../utils/error.js");
+const { verifyUser, verifyAdmin } = require("../utils/verifyToken");
 
 const router = express.Router();
 
 // CREATE
-// The reason why we used async here just because we will connect to DB and it will take time to connect, therefore, async helps in this case
-router.post("/", createHotel);
+// Only admin can create hotel that's why we passed only verifyAdmin here
+router.post("/", verifyAdmin, createHotel);
 
 // UPDATE
-router.put("/:id", updateHotel);
+router.put("/:id", verifyAdmin, updateHotel);
 
 // DELETE
-router.delete("/:id", deleteHotel);
+router.delete("/:id", verifyAdmin, deleteHotel);
 
 // GET SPECIFIC HOTEL
 router.get("/:id", getHotel);

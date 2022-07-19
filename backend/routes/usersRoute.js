@@ -35,6 +35,7 @@ router.delete("/:id", verifyUser, deleteUser);
 router.get("/:id", verifyUser, getUser);
 
 //GET ALL
+//Passing the verifyAdmin for admin only to have access to the users
 router.get("/", verifyAdmin, getAllUsers);
 
 module.exports = router;

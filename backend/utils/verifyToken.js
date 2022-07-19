@@ -18,7 +18,7 @@ const verifyToken = (req, res, next) => {
 
 const verifyAdmin = (req, res, next) => {
   //Passing the verifyToken first to check the user is admin
-  verifyToken(req, res, () => {
+  verifyToken(req, res, next, () => {
     //Checking the id if it's admin
     if (req.user.isAdmin) {
       next();
@@ -31,7 +31,7 @@ const verifyAdmin = (req, res, next) => {
 //Creating this to verify the user authentication
 const verifyUser = (req, res, next) => {
   //Passing the verifyToken first to check the user authentication
-  verifyToken(req, res, () => {
+  verifyToken(req, res, next, () => {
     //Checking the id if it's equal to each other and give an access/permission to admin as well
     //req.user.id is from JWT token and req.params.id is from the user id. THis is for checking the ownership and give access to the right user
     if (req.user.id === req.params.id || req.user.isAdmin) {
