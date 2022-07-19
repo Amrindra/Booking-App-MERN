@@ -33,7 +33,6 @@ const login = async (req, res, next) => {
     if (!currentUser) {
       return next(createError(404, "User not found"));
     }
-
     //Comparing the password from user types in and password in the database
     //If it doesn't match send error message, if it does send that user
     const checkingPassword = await bcrypt.compare(
@@ -42,12 +41,10 @@ const login = async (req, res, next) => {
     );
     if (!checkingPassword)
       return next(createError(400, "Wrong password or username!"));
-
     const token = jwt.sign(
       { id: currentUser._id, isAdmin: currentUser.isAdmin },
       process.env.JWT_TOKEN
     );
-
     //Extracting the password and isAdmin out and send only the rest of data to the user request
     //By doing this it's saver because we don't send password to the client side
     const { password, isAdmin, ...others } = currentUser._doc;

@@ -28,6 +28,7 @@ const verifyAdmin = (req, res, next) => {
   });
 };
 
+//Creating this to verify the user authentication
 const verifyUser = (req, res, next) => {
   //Passing the verifyToken first to check the user authentication
   verifyToken(req, res, () => {

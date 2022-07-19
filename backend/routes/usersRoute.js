@@ -6,42 +6,35 @@ const {
   getUser,
   getAllUsers,
 } = require("../controller/userController");
-const {
-  verifyToken,
-  verifyUser,
-  verifyAdmin,
-} = require("../utils/verifyToken");
+const { verifyUser, verifyAdmin } = require("../utils/verifyToken");
 
 const router = express.Router();
 
 //Passing verifyToken to check to see if the user is authenticated
-router.get("/checkauthentication", verifyToken, (req, res, next) => {
-  res.send("User logged in");
-});
+// router.get("/checkauthentication", verifyToken, (req, res, next) => {
+//   res.send("User logged in");
+// });
 
-router.get("/checkadmin/:id", verifyAdmin, (req, res, next) => {
-  res.send("Admin logged in. You can delete your account");
-});
+// router.get("/checkadmin/:id", verifyAdmin, (req, res, next) => {
+//   res.send("Admin logged in. You can delete your account");
+// });
 
-router.get("/checkuser/:id", verifyUser, (req, res, next) => {
-  res.send("User logged in. You can delete your account");
-});
+// router.get("/checkuser/:id", verifyUser, (req, res, next) => {
+//   res.send("User logged in. You can delete your account");
+// });
 
-// CREATE
-// The reason why we used async here just because we will connect to DB and it will take time to connect, therefore, async helps in this case
-router.post("/", createUser);
-
+// Pass verifyUser to verify if the user is the right user to update the information
 // UPDATE
-router.put("/:id", updateUser);
+router.put("/:id", verifyUser, updateUser);
 
 // DELETE
-router.delete("/:id", deleteUser);
+// Pass verifyUser to verify if the user is the right user to delete the information
+router.delete("/:id", verifyUser, deleteUser);
 
 // GET SPECIFIC HOTEL
-router.get("/:id", getUser);
+router.get("/:id", verifyUser, getUser);
 
 //GET ALL
-//Used next middleware so that we can customize our error messages
-router.get("/", getAllUsers);
+router.get("/", verifyAdmin, getAllUsers);
 
 module.exports = router;
