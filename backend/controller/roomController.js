@@ -71,7 +71,7 @@ export const getRoom = async (req, res, next) => {
     next(err);
   }
 };
-export const getRooms = async (req, res, next) => {
+export const getAllRoom = async (req, res, next) => {
   try {
     const rooms = await RoomModel.find();
     res.status(200).json(rooms);
