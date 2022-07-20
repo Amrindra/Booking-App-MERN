@@ -1,8 +1,8 @@
 const RoomModel = require("../models/RoomModel.js");
 const HotelModel = require("../models/HotelModel.js");
 
-export const createRoom = async (req, res, next) => {
-  const hotelId = req.params.hotelid;
+const createRoom = async (req, res, next) => {
+  const hotelId = req.params.hotelId;
   const newRoom = new RoomModel(req.body);
 
   try {
@@ -20,7 +20,7 @@ export const createRoom = async (req, res, next) => {
   }
 };
 
-export const updateRoom = async (req, res, next) => {
+const updateRoom = async (req, res, next) => {
   try {
     const updatedRoom = await RoomModel.findByIdAndUpdate(
       req.params.id,
@@ -32,7 +32,7 @@ export const updateRoom = async (req, res, next) => {
     next(err);
   }
 };
-export const updateRoomAvailability = async (req, res, next) => {
+const updateRoomAvailability = async (req, res, next) => {
   try {
     await RoomModel.updateOne(
       { "roomNumbers._id": req.params.id },
@@ -47,7 +47,7 @@ export const updateRoomAvailability = async (req, res, next) => {
     next(err);
   }
 };
-export const deleteRoom = async (req, res, next) => {
+const deleteRoom = async (req, res, next) => {
   const hotelId = req.params.hotelid;
   try {
     await RoomModel.findByIdAndDelete(req.params.id);
@@ -63,7 +63,7 @@ export const deleteRoom = async (req, res, next) => {
     next(err);
   }
 };
-export const getRoom = async (req, res, next) => {
+const getRoom = async (req, res, next) => {
   try {
     const room = await RoomModel.findById(req.params.id);
     res.status(200).json(room);
@@ -71,11 +71,20 @@ export const getRoom = async (req, res, next) => {
     next(err);
   }
 };
-export const getAllRoom = async (req, res, next) => {
+const getAllRooms = async (req, res, next) => {
   try {
     const rooms = await RoomModel.find();
     res.status(200).json(rooms);
   } catch (err) {
     next(err);
   }
+};
+
+module.exports = {
+  createRoom,
+  updateRoom,
+  updateRoomAvailability,
+  deleteRoom,
+  getRoom,
+  getAllRooms,
 };
