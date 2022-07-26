@@ -28,7 +28,7 @@ const login = async (req, res, next) => {
   try {
     //Finding existed user in the database if not found send back the "User not found"
     const existedUser = await UserModel.findOne({
-      username: req.body.username || req.body.email,
+      username: req.body.username,
     });
     if (!existedUser) {
       return next(createError(404, "User not found!"));
