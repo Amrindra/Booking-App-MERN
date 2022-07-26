@@ -59,10 +59,27 @@ const getAllHotels = async (req, res, next) => {
   }
 };
 
+const countByCity = async (req, res, next) => {
+  //Getting query from the URL that contains city names. Split each city using .split() method to return array of each city
+  const cities = req.query.cities.split(",");
+  try {
+    const list = await Promise.all(
+      cities.map((city) => {
+        //HotelModel.countDocuments({ city: city }) returning the length of the city array
+        return HotelModel.countDocuments({ city: city });
+      })
+    );
+    res.status(200).json(list);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   createHotel,
   updateHotel,
   deleteHotel,
   getHotel,
   getAllHotels,
+  countByCity,
 };

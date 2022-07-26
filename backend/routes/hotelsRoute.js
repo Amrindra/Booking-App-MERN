@@ -5,6 +5,7 @@ const {
   deleteHotel,
   getHotel,
   getAllHotels,
+  countByCity,
 } = require("../controller/hotelController.js");
 const HotelModel = require("../models/HotelModel.js");
 // const createError = require("../utils/error.js");
@@ -23,10 +24,12 @@ router.put("/:id", verifyAdmin, updateHotel);
 router.delete("/:id", verifyAdmin, deleteHotel);
 
 // GET SPECIFIC HOTEL
-router.get("/:id", getHotel);
+router.get("/findHotel:id", getHotel);
 
 //GET ALL
 //Used next middleware so that we can customize our error messages
 router.get("/", getAllHotels);
+router.get("/countByCity", countByCity);
+router.get("/countByType", getAllHotels);
 
 module.exports = router;

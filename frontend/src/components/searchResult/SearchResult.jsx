@@ -5,8 +5,8 @@ const SearchResult = () => {
     <div className="search_result">
       <img
         className="search_result_img"
-        src="https://lh3.googleusercontent.com/proxy/rpCOCUeL5DTvc3qiQw93r5qFPhBgPzrrFfl-UZHTKJWxde5ZFqS1g5WkJcaPaeU5WQ7tqySl88q2teTB1yABDmSRA-MIxUWdgyrF3qWX6JDk6I6a8F0-q1t-6j3stlxKXtodNwluRtuBnHrjJe1lyEw8CYkzFw=w296-h202-n-k-rw-no-v1"
-        alt=""
+        src="https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        alt="hotel"
       />
 
       <div className="search_result_desc">
