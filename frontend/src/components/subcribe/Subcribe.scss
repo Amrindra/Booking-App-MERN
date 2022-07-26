@@ -1,0 +1,36 @@
+.subcribe{
+  width: 100%;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  background-color: black;
+  color: white;
+  padding: 70px;
+
+  .subcribe_input_container{
+    input{
+      width: 300px;
+      height: 40px;
+      padding: 10px;
+      border: none;
+      outline: none;
+      margin-right: 10px;
+      border-radius: 5px;
+    }
+
+    button{
+      height: 40px;
+      background-color: rgb(232, 27, 27);
+      color: white;
+      font-weight: 500;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      padding: 10px;
+
+    }
+  }
+
+}

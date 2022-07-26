@@ -1,0 +1,46 @@
+.feature_hotel{
+  width: 100%;
+  max-width: var(--max-width);
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+
+  .feature_hotel_items{
+    flex: 1;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+
+    img{
+      width: 100%;
+    }
+
+    .feature_hotel_name{
+      font-weight: bold;
+    }
+
+    .feature_hotel_city{
+      font-weight: 300;
+    }
+
+    .feature_hotel_price{
+      font-weight: 500;
+    }
+
+    .feature_hotel_rating{
+      button{
+        background-color: teal;
+        color: white;
+        border: none;
+        padding: 2px;
+        margin-right: 10px;
+        font-weight: bold;
+      }
+
+      span{
+        font-size: 	0.875rem;
+      }
+    }
+  }
+
+}

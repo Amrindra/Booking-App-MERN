@@ -1,0 +1,113 @@
+.search_result{
+  border: 1px solid lightgray;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+
+  .search_result_img{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .search_result_desc{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 2;
+
+    .search_result_title{
+      font-size: 1.25rem;
+      color: var(--main-color);
+    }
+
+    .search_result_distance{
+      font-size: 	0.75rem;
+    }
+    
+    .search_result_taxi_options{
+      font-size: 0.75rem;
+      background-color: var(--main-color);
+      color:white;
+      width: max-content;
+      padding: 3px;
+      border-radius: 5px;
+    }
+
+    .search_result_subtitle{
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+
+    .search_result_features{
+      font-size: 0.75rem;
+    }
+
+
+    .search_result_cancel_options{
+      font-size: 0.75rem;
+      color: #a43838;
+      font-weight: bold;
+      
+    }
+
+    .search_result_cancel_options_subtitle{
+      font-size: 0.75rem;
+      color: #a43838;
+    }
+  }
+
+  .search_result_details{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .search_result_ratings{
+      display: flex;
+      justify-content: space-between;
+
+      span{
+        font-weight: 500;
+      }
+
+      button{
+        background-color: var(--main-color);
+        color: white;
+        padding: 5px;
+        font-weight: bold;
+        border: none;
+      }
+    }
+
+    .search_result_detail_text{
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      .search_result_price{
+        font-size: 1.25rem;
+      }
+
+      .search_result_tax_options{
+        font-size: 0.75rem;
+        color: gray;
+      }
+
+      button{
+        background-color: var(--main-color);
+        color: white;
+        font-weight: bold;
+        padding: 10px 5px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+    }
+
+  }
+}
