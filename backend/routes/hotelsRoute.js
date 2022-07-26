@@ -7,8 +7,8 @@ const {
   getAllHotels,
 } = require("../controller/hotelController.js");
 const HotelModel = require("../models/HotelModel.js");
-const createError = require("../utils/error.js");
-const { verifyUser, verifyAdmin } = require("../utils/verifyToken");
+// const createError = require("../utils/error.js");
+const { verifyAdmin } = require("../utils/verifyToken");
 
 const router = express.Router();
 

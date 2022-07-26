@@ -26,28 +26,28 @@ const register = async (req, res, next) => {
 // Login
 const login = async (req, res, next) => {
   try {
-    //Finding current user in the database if not found send back the "User not found"
-    const currentUser = await UserModel.findOne({
-      username: req.body.username,
+    //Finding existed user in the database if not found send back the "User not found"
+    const existedUser = await UserModel.findOne({
+      username: req.body.username || req.body.email,
     });
-    if (!currentUser) {
-      return next(createError(404, "User not found"));
+    if (!existedUser) {
+      return next(createError(404, "User not found!"));
     }
     //Comparing the password from user types in and password in the database
     //If it doesn't match send error message, if it does send that user
     const checkingPassword = await bcrypt.compare(
       req.body.password,
-      currentUser.password
+      existedUser.password
     );
     if (!checkingPassword)
       return next(createError(400, "Wrong password or username!"));
     const token = jwt.sign(
-      { id: currentUser._id, isAdmin: currentUser.isAdmin },
+      { id: existedUser._id, isAdmin: existedUser.isAdmin },
       process.env.JWT_TOKEN
     );
     //Extracting the password and isAdmin out and send only the rest of data to the user request
     //By doing this it's saver because we don't send password to the client side
-    const { password, isAdmin, ...others } = currentUser._doc;
+    const { password, isAdmin, ...others } = existedUser._doc;
 
     //By doing this it won't allow client secret to reach this cookie and it's much more secure
     res
