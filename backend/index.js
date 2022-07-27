@@ -6,6 +6,7 @@ const usersRoute = require("./routes/usersRoute.js");
 const hotelsRoute = require("./routes/hotelsRoute.js");
 const roomsRoute = require("./routes/roomsRoute.js");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 
 const app = express();
 
@@ -32,6 +33,7 @@ mongoose.connection.on("connected", () => {
 
 // Middlewares
 //if we don't use express.json we won't be able to send post request
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
