@@ -1,6 +1,12 @@
+import useFetch from "../../hooks/useFetch";
 import "./HeroBanner.scss";
 
-const Featured = () => {
+const HeroBanner = () => {
+
+  const { data, loading, error } = useFetch("/hotels/countByCity?cities=Berlin,Madrid,London")
+
+  console.log(data);
+
   return (
     <div className="hero_banner">
       <div className="hero_banner_item">
@@ -41,4 +47,4 @@ const Featured = () => {
   );
 };
 
-export default Featured;
+export default HeroBanner;

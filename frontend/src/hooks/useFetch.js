@@ -11,24 +11,25 @@ const useFetch = (url) => {
     const fetchData = async () => {
       //While fetching data, setLoading to true
       setLoading(true);
-      const response = await axios.get(url);
       try {
+        const response = await axios.get(url);
         setData(response.data);
       } catch (error) {
-        setError(true);
+        setError(error);
       }
 
       //When fetching is done setLoading to false
       setLoading(false);
     };
+
     fetchData();
   }, [url]);
 
   const reFetchData = async () => {
     //While fetching data, setLoading to true
     setLoading(true);
-    const response = await axios.get(url);
     try {
+      const response = await axios.get(url);
       setData(response.data);
     } catch (error) {
       setError(true);

@@ -14,7 +14,7 @@ const HotelList = () => {
   const [date, setDate] = useState(location.state?.date);
   const [options, setOptions] = useState(location.state?.options);
   const [showDatePicker, setShowDatePicker] = useState(false);
-  console.log(location);
+  // console.log(location);
 
   return (
     <>
