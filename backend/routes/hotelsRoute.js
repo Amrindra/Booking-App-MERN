@@ -6,6 +6,7 @@ const {
   getHotel,
   getAllHotels,
   countByCity,
+  countByType,
 } = require("../controller/hotelController.js");
 const HotelModel = require("../models/HotelModel.js");
 // const createError = require("../utils/error.js");
@@ -30,6 +31,6 @@ router.get("/findHotel:id", getHotel);
 //Used next middleware so that we can customize our error messages
 router.get("/", getAllHotels);
 router.get("/countByCity", countByCity);
-router.get("/countByType", getAllHotels);
+router.get("/countByType", countByType);
 
 module.exports = router;

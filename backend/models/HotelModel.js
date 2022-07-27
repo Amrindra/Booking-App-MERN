@@ -5,7 +5,7 @@ const HotelSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
-  hotelType: {
+  type: {
     type: String,
     require: true,
   },

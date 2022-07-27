@@ -75,6 +75,32 @@ const countByCity = async (req, res, next) => {
   }
 };
 
+//This function is counting by type of hotel from what we have in the database
+const countByType = async (req, res, next) => {
+  try {
+    //countDocuments({ type: "Hotel" }) meaning that get the type of hotel from database and count them
+    const hotelCount = await HotelModel.countDocuments({ type: "Hotel" });
+    const apartmentCount = await HotelModel.countDocuments({
+      type: "apartment",
+    });
+    const resortCount = await HotelModel.countDocuments({ type: "Resort" });
+    const villaCount = await HotelModel.countDocuments({ type: "Villa" });
+    const cabinCount = await HotelModel.countDocuments({ type: "Cabin" });
+
+    //sending an array of objects containing type result from the database
+    //We can fetch this data from the frontend side
+    res.status(200).json([
+      { type: "hotel", count: hotelCount },
+      { type: "apartment", count: apartmentCount },
+      { type: "resorts", count: resortCount },
+      { type: "villas", count: villaCount },
+      { type: "cabins", count: cabinCount },
+    ]);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   createHotel,
   updateHotel,
@@ -82,4 +108,5 @@ module.exports = {
   getHotel,
   getAllHotels,
   countByCity,
+  countByType,
 };
