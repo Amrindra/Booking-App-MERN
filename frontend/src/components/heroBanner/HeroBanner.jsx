@@ -41,7 +41,7 @@ const HeroBanner = () => {
       ) : (
         <>
           {heroBannerData.map((item) => (
-            <div className="hero_banner_item">
+            <div className="hero_banner_item" key={item.image}>
               <img src={item.image} alt="" className="hero_banner_image" />
               <div className="hero_banner_titles">
                 <h1>{item.cityName}</h1>

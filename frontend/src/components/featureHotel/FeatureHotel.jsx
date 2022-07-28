@@ -1,8 +1,13 @@
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import useFetch from "../../hooks/useFetch";
 import "./FeatureHotel.scss";
 // import { faStarSharp } from "@fortawesome/free-solid-svg-icons";
 
 const FeatureHotel = () => {
+  const { data, loading } = useFetch(
+    "/hotels/countByCity?cities=Boston,Maine,Haverhill"
+  );
+
   return (
     <div className="feature_hotel">
       <div className="feature_hotel_items">
