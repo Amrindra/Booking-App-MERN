@@ -2,7 +2,7 @@ import useFetch from "../../hooks/useFetch";
 import "./PropertyList.scss";
 
 const PropertyList = () => {
-  const { data, loading, error } = useFetch("/hotels/countByType")
+  const { data, loading } = useFetch("/hotels/countByType")
 
   console.log(data)
 
@@ -20,14 +20,14 @@ const PropertyList = () => {
         <>
           {data && images.map((image,index) => (
 
-            <div className="prop_items">
+            <div className="prop_items" key={index}>
               <img
                 src={image}
                 alt=""
               />
               <div className="prop_titles">
-                <h1>{data[index].type}</h1>
-                <h2>{data[index].count} {data[index].type}</h2>
+                <h1>{data[index]?.type}</h1>
+                <h2>{data[index]?.count} {data[index]?.type}</h2>
               </div>
             </div>))}
 

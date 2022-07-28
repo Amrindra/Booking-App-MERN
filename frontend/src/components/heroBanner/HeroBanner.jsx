@@ -3,7 +3,7 @@ import "./HeroBanner.scss";
 
 const HeroBanner = () => {
 
-  const { data, loading, error } = useFetch("/hotels/countByCity?cities=Boston,Maine,Haverhill")
+  const { data, loading } = useFetch("/hotels/countByCity?cities=Boston,Maine,Haverhill")
 
   console.log(data);
 

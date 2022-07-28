@@ -90,8 +90,8 @@ const countByType = async (req, res, next) => {
     //sending an array of objects containing type result from the database
     //We can fetch this data from the frontend side
     res.status(200).json([
-      { type: "hotel", count: hotelCount },
-      { type: "apartment", count: apartmentCount },
+      { type: "hotels", count: hotelCount },
+      { type: "apartments", count: apartmentCount },
       { type: "resorts", count: resortCount },
       { type: "villas", count: villaCount },
       { type: "cabins", count: cabinCount },
