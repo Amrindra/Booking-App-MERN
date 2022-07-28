@@ -23,7 +23,7 @@ const PropertyList = () => {
             <div className="prop_items" key={index}>
               <img
                 src={image}
-                alt=""
+                alt="hotel pictures"
               />
               <div className="prop_titles">
                 <h1>{data[index]?.type}</h1>
