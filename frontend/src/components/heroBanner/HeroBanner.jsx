@@ -11,7 +11,7 @@ const HeroBanner = () => {
     {
       cityName: "Boston",
       image:
-        "https://a.cdn-hotels.com/gdcs/production79/d1680/d7d5bf20-9335-409b-b6a5-878f5c502e86.jpg",
+        "https://images.pexels.com/photos/776030/pexels-photo-776030.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       property: `${
         data[0] > 1 ? `${data[0]} Properties` : `${data[0]} Property`
       }`,
@@ -19,7 +19,7 @@ const HeroBanner = () => {
     {
       cityName: "Maine",
       image:
-        "https://a.cdn-hotels.com/gdcs/production79/d1680/d7d5bf20-9335-409b-b6a5-878f5c502e86.jpg",
+        "https://images.pexels.com/photos/9991156/pexels-photo-9991156.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       property: `${
         data[0] > 1 ? `${data[0]} Properties` : `${data[0]} Property`
       }`,
@@ -27,7 +27,7 @@ const HeroBanner = () => {
     {
       cityName: "Haverhill",
       image:
-        "https://a.cdn-hotels.com/gdcs/production79/d1680/d7d5bf20-9335-409b-b6a5-878f5c502e86.jpg",
+        "https://media.istockphoto.com/photos/haverhill-massachusetts-along-the-merrimack-river-picture-id1263721004?b=1&k=20&m=1263721004&s=612x612&w=0&h=1uNVOWeJP9S2OSPR7nz8FPMNVSqgH4OcUWEfuuv8qhU=",
       property: `${
         data[0] > 1 ? `${data[0]} Properties` : `${data[0]} Property`
       }`,
