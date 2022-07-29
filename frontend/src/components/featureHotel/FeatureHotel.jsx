@@ -16,10 +16,7 @@ const FeatureHotel = () => {
         <>
           {data.map((item) => (
             <div className="feature_hotel_items" key={item._id}>
-              <img
-                src="https://media-cdn.tripadvisor.com/media/photo-s/1c/d2/51/82/exterior.jpg"
-                alt=""
-              />
+              <img src={item.photos[0]} alt={item.hotelName} />
               <span className="feature_hotel_name">{item.hotelName}</span>
               <span className="feature_hotel_city">{item.city}</span>
               <span className="feature_hotel_price">
