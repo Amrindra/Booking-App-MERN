@@ -4,9 +4,8 @@ import "./FeatureHotel.scss";
 // import { faStarSharp } from "@fortawesome/free-solid-svg-icons";
 
 const FeatureHotel = () => {
-  const { data, loading } = useFetch(
-    "/hotels/countByCity?cities=Boston,Maine,Haverhill"
-  );
+  const countByTypeURL = "/hotels/countByCity?cities=Boston,Maine,Haverhill";
+  const { data, loading } = useFetch(countByTypeURL);
 
   return (
     <div className="feature_hotel">

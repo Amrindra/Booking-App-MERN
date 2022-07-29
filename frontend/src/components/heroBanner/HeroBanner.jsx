@@ -2,9 +2,8 @@ import useFetch from "../../hooks/useFetch";
 import "./HeroBanner.scss";
 
 const HeroBanner = () => {
-  const { data, loading } = useFetch(
-    "/hotels/countByCity?cities=Boston,Maine,Haverhill"
-  );
+  const countByCityURL = "/hotels/countByCity?cities=Boston,Maine,Haverhill";
+  const { data, loading } = useFetch(countByCityURL);
   // console.log(data);
 
   const heroBannerData = [
