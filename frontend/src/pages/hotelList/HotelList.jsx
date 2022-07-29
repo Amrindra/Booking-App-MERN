@@ -17,7 +17,7 @@ const HotelList = () => {
   const [showDatePicker, setShowDatePicker] = useState(false);
   // console.log(location);
 
-  const { data, loading, refetch } = useFetch("/hotels/countByType");
+  const { data, loading, refetch } = useFetch(`/hotels?city=${destination}`);
 
   return (
     <>
@@ -105,18 +105,16 @@ const HotelList = () => {
           </div>
 
           <div className="hotel_list_result">
-            <SearchResult />
-            <SearchResult />
-            <SearchResult />
-            <SearchResult />
-            <SearchResult />
-            <SearchResult />
-            <SearchResult />
-            <SearchResult />
-            <SearchResult />
-            <SearchResult />
-            <SearchResult />
-            <SearchResult />
+            {loading ? (
+              "Loading data..."
+            ) : (
+              <>
+                {data.map((item) => (
+                  // passing item as props
+                  <SearchResult item={item} key={item._id} />
+                ))}
+              </>
+            )}
           </div>
         </div>
       </section>
