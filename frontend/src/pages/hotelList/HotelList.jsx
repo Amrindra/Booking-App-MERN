@@ -6,6 +6,7 @@ import { useState } from "react";
 import { format } from "date-fns";
 import { DateRange } from "react-date-range";
 import SearchResult from "../../components/searchResult/SearchResult";
+import useFetch from "../../hooks/useFetch";
 
 const HotelList = () => {
   //This location will contain the informations from the Header component where we search, select date and option from Header component
@@ -15,6 +16,8 @@ const HotelList = () => {
   const [options, setOptions] = useState(location.state?.options);
   const [showDatePicker, setShowDatePicker] = useState(false);
   // console.log(location);
+
+  const { data, loading, refetch } = useFetch("/hotels/countByType");
 
   return (
     <>
