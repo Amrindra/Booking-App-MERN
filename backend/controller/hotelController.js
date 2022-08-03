@@ -59,7 +59,7 @@ const getAllHotels = async (req, res, next) => {
     //Query for the cheapestPrice in the database
     const allHotels = await HotelModel.find({
       ...others,
-      cheaperPrice: { $gt: min | 1, $lt: max || 999 },
+      cheapestPrice: { $gt: min | 1, $lt: max || 999 },
     }).limit(req.query.limit);
     res.status(200).json(allHotels);
   } catch (error) {

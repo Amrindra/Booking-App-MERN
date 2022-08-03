@@ -5,7 +5,7 @@ import "./FeatureHotel.scss";
 
 const FeatureHotel = () => {
   const { data, loading } = useFetch(
-    "/hotels?featured=true&limit=5&min=10&max=200"
+    "/hotels?featured=true&limit=5&min=10&max=250"
   );
 
   return (

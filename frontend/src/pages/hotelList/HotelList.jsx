@@ -15,7 +15,11 @@ const HotelList = () => {
   const [date, setDate] = useState(location.state?.date);
   const [options, setOptions] = useState(location.state?.options);
   const [showDatePicker, setShowDatePicker] = useState(false);
+  const [min, setMin] = useState(undefined);
+  const [max, setMax] = useState(undefined);
+
   // console.log(location);
+  console.log(destination);
 
   const { data, loading, refetch } = useFetch(`/hotels?city=${destination}`);
 
@@ -35,7 +39,7 @@ const HotelList = () => {
             </div>
 
             <div className="hotel_list_items">
-              <label>Cehck-in Date</label>
+              <label>Check-in Date</label>
               <span
                 className="date_picker_span"
                 onClick={() => setShowDatePicker(!showDatePicker)}
@@ -59,14 +63,22 @@ const HotelList = () => {
                   <span className="list_option_text">
                     Min price <small>per night</small>
                   </span>
-                  <input type="number" className="list_option_input" />
+                  <input
+                    type="number"
+                    onChange={(e) => setMin(e.target.value)}
+                    className="list_option_input"
+                  />
                 </div>
 
                 <div className="list_option_Item">
                   <span className="list_option_text">
                     Max price <small>per night</small>
                   </span>
-                  <input type="number" className="list_option_input" />
+                  <input
+                    type="number"
+                    onChange={(e) => setMax(e.target.value)}
+                    className="list_option_input"
+                  />
                 </div>
 
                 <div className="list_option_Item">
