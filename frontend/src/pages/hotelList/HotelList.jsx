@@ -21,12 +21,12 @@ const HotelList = () => {
   // console.log(location);
   console.log(destination);
 
-  const { data, loading, refetch } = useFetch(
+  const { data, loading, reFetchData } = useFetch(
     `/hotels?city=${destination}&min=${min || 0}&max=${max || 999}`
   );
 
   const handleClick = () => {
-    refetch();
+    reFetchData();
   };
 
   return (
