@@ -21,7 +21,13 @@ const HotelList = () => {
   // console.log(location);
   console.log(destination);
 
-  const { data, loading, refetch } = useFetch(`/hotels?city=${destination}`);
+  const { data, loading, refetch } = useFetch(
+    `/hotels?city=${destination}&min=${min || 0}&max=${max || 999}`
+  );
+
+  const handleClick = () => {
+    refetch();
+  };
 
   return (
     <>
@@ -113,7 +119,9 @@ const HotelList = () => {
               </div>
             </div>
 
-            <button className="search_btn">Search</button>
+            <button onClick={handleClick} className="search_btn">
+              Search
+            </button>
           </div>
 
           <div className="hotel_list_result">
