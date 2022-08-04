@@ -6,12 +6,14 @@ import "./styles.css";
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/hotels" element={<HotelList />} />
-        <Route path="/hotels/:id" element={<SingleHotelPage />} />
-      </Routes>
-    </BrowserRouter>
+    <div className="app">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/hotels" element={<HotelList />} />
+          <Route path="/hotels/:id" element={<SingleHotelPage />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }

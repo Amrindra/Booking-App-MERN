@@ -37,6 +37,19 @@ const HotelList = () => {
       {/* Hotel list search section */}
       <section className="hotel_list_container">
         <div className="hotel_list_warpper">
+          <div className="hotel_list_result">
+            {loading ? (
+              "Loading data..."
+            ) : (
+              <>
+                {data.map((item) => (
+                  // passing item as props
+                  <SearchResult item={item} key={item._id} />
+                ))}
+              </>
+            )}
+          </div>
+
           <div className="hotel_list_search">
             <h1 className="hotel_list_title">Search</h1>
             <div className="hotel_list_items">
@@ -120,19 +133,6 @@ const HotelList = () => {
             <button onClick={handleClick} className="search_btn">
               Search
             </button>
-          </div>
-
-          <div className="hotel_list_result">
-            {loading ? (
-              "Loading data..."
-            ) : (
-              <>
-                {data.map((item) => (
-                  // passing item as props
-                  <SearchResult item={item} key={item._id} />
-                ))}
-              </>
-            )}
           </div>
         </div>
       </section>

@@ -97,14 +97,12 @@
           box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.4);
           z-index: 99;
 
-
           .option_items{
             display: flex;
             justify-content: space-between;
             width: 200px;
             margin: 10px;
             
-
             .option_counter_wrapper{
               display: flex;
               align-items: center;
@@ -112,7 +110,6 @@
               font-size: 1rem;
               color: black;
               
-
               .option_counter_button{
                 width: 30px;
                 height: 30px;
@@ -130,11 +127,22 @@
                 &:disabled{
                   cursor: not-allowed;
                 }
-
               }
             }
           }
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px){
+  .header{
+
+    .header_container{
+      .header_search{
+        width: 95%;
+        left: 25px;
       }
     }
   }

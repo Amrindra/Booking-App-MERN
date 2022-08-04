@@ -6,7 +6,7 @@
 
   .navbar_container{
     width: 100%;
-    max-width: 1024px;
+    max-width: var(--max-width);
     color: white;
     display: flex;
     align-items: center;
@@ -27,5 +27,12 @@
         border-radius: 10px;
       }
     }
+  }
+}
+
+@media (max-width: 1024px){
+  .navbar_container{
+    margin-left: 25px;
+    margin-right: 25px;
   }
 }
