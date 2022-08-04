@@ -138,7 +138,7 @@ const SingleHotelPage = () => {
                 Reiciendis, perspiciatis.
               </span>
               <h2>
-                <b>$900</b> (10 nights
+                <b>$900</b> /10 nights
               </h2>
               <button>Reserve or Book Now!</button>
             </div>

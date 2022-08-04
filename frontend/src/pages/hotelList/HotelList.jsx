@@ -66,22 +66,20 @@ const HotelList = () => {
               <label>Options</label>
               <div className="list_option_wrapper">
                 <div className="list_option_Item">
-                  <span className="list_option_text">
-                    Min price <small>per night</small>
-                  </span>
+                  <span className="list_option_text">Min price per night</span>
                   <input
                     type="number"
+                    min={0}
                     onChange={(e) => setMin(e.target.value)}
                     className="list_option_input"
                   />
                 </div>
 
                 <div className="list_option_Item">
-                  <span className="list_option_text">
-                    Max price <small>per night</small>
-                  </span>
+                  <span className="list_option_text">Max price per night</span>
                   <input
                     type="number"
+                    min={0}
                     onChange={(e) => setMax(e.target.value)}
                     className="list_option_input"
                   />
