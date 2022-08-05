@@ -21,9 +21,9 @@ const Homepage = () => {
         <PropertyList />
         <h1 className="homepage_title">Homes gests love</h1>
         <FeatureHotel />
-        <Subcribe />
       </section>
 
+      <Subcribe />
       <Footer />
     </>
   );
