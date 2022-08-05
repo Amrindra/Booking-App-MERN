@@ -25,7 +25,7 @@ router.put("/:id", verifyAdmin, updateHotel);
 router.delete("/:id", verifyAdmin, deleteHotel);
 
 // GET SPECIFIC HOTEL
-router.get("/findHotel:id", getHotel);
+router.get("/findHotel/:id", getHotel);
 
 //GET ALL
 //Used next middleware so that we can customize our error messages

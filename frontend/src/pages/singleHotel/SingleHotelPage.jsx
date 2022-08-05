@@ -37,7 +37,9 @@ const SingleHotelPage = () => {
     setSliderNumber(newSliderNumber);
   };
 
-  const { data, loading, error } = useFetch(`/hotels/${hotelIDFromURL}`);
+  const { data, loading, error } = useFetch(
+    `/hotels/findHotel/${hotelIDFromURL}`
+  );
 
   return (
     <div>
@@ -83,7 +85,7 @@ const SingleHotelPage = () => {
             </div>
 
             <span className="singleHotelPage_distance">
-              Perfect location - {data.distance}m{" "}
+              Perfect location - {data.distance}
             </span>
             <div className="singleHotelPage_Highlight">
               Book this price {data.cheapestPrice} will save you tons of money.
