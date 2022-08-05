@@ -78,7 +78,7 @@ const SingleHotelPage = () => {
           )}
           <div className="singleHotelPage_wrapper">
             <button className="book_now_btn">Book Now!</button>
-            <h1 className="title">{data.name}</h1>
+            <h1 className="title">{data.hotelName}</h1>
             <div className="singleHotelPage_address">
               <FontAwesomeIcon icon={faLocationDot} />
               <span>{data.address}</span>
@@ -106,7 +106,7 @@ const SingleHotelPage = () => {
 
             <div className="singleHotelPage_details">
               <div className="singleHotelPage_texts">
-                <h1 className="title">{data.hotelName}</h1>
+                <h1 className="title">{data.title}</h1>
                 <p className="singleHotelPage_desc">{data.desc}</p>
               </div>
 
