@@ -13,6 +13,8 @@ import "./SingleHotelPage.scss";
 import { useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import { useLocation } from "react-router-dom";
+import { useContext } from "react";
+import { SearchContext } from "../../context/SearchContext";
 
 const SingleHotelPage = () => {
   const location = useLocation();
@@ -40,6 +42,10 @@ const SingleHotelPage = () => {
   const { data, loading, error } = useFetch(
     `/hotels/findHotel/${hotelIDFromURL}`
   );
+
+  const { dates } = useContext(SearchContext);
+
+  console.log(dates);
 
   return (
     <div>
