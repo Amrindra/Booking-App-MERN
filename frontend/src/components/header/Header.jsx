@@ -5,7 +5,7 @@ import {
   faCar,
   faPerson,
   faPlane,
-  faTaxi
+  faTaxi,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
@@ -14,14 +14,16 @@ import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { SearchContext } from "../../context/SearchContext";
 
 const Header = ({ type }) => {
-  const [date, setDate] = useState([
+  const [dates, setDates] = useState([
     {
       startDate: new Date(),
       endDate: new Date(),
-      key: "selection"
-    }
+      key: "selection",
+    },
   ]);
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [showOptions, setShowOptions] = useState(false);
@@ -29,7 +31,7 @@ const Header = ({ type }) => {
   const [options, setOptions] = useState({
     adult: 1,
     children: 0,
-    room: 1
+    room: 1,
   });
 
   const handleOption = (name, operation) => {
@@ -38,17 +40,23 @@ const Header = ({ type }) => {
         ...prev,
         // [name] come from the parameters passing through onClick. "adult, children, room"
         [name]:
-          operation === "decrement" ? options[name] - 1 : options[name] + 1
+          operation === "decrement" ? options[name] - 1 : options[name] + 1,
       };
     });
   };
 
   const navigate = useNavigate();
 
+  const { dispatch } = useContext(SearchContext);
+
   const handleSearch = () => {
+    dispatch({
+      type: "NEW_SEARCH",
+      payload: { destination, dates, options },
+    });
     //Sending destination, date, and options state to hotel page
     //To get these state information we can use useLocation from react-router-dom
-    navigate("/hotels", { state: { destination, date, options } });
+    navigate("/hotels", { state: { destination, dates, options } });
   };
 
   return (
@@ -112,8 +120,8 @@ const Header = ({ type }) => {
                 <span
                   onClick={() => setShowDatePicker(!showDatePicker)}
                   className="header_search_text"
-                >{`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(
-                  date[0].endDate,
+                >{`${format(dates[0].startDate, "MM/dd/yyyy")} to ${format(
+                  dates[0].endDate,
                   "MM/dd/yyyy"
                 )}`}</span>
 
@@ -121,9 +129,9 @@ const Header = ({ type }) => {
                 {showDatePicker && (
                   <DateRange
                     editableDateInputs={true}
-                    onChange={(item) => setDate([item.selection])}
+                    onChange={(item) => setDates([item.selection])}
                     moveRangeOnFirstSelection={false}
-                    ranges={date}
+                    ranges={dates}
                     className="date_picker"
                     minDate={new Date()}
                   />

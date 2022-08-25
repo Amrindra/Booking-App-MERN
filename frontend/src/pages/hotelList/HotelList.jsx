@@ -12,7 +12,7 @@ const HotelList = () => {
   //This location will contain the informations from the Header component where we search, select date and option from Header component
   const location = useLocation();
   const [destination, setDestination] = useState(location.state?.destination);
-  const [date, setDate] = useState(location.state?.date);
+  const [dates, setDates] = useState(location.state?.dates);
   const [options, setOptions] = useState(location.state?.options);
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [min, setMin] = useState(undefined);
@@ -62,14 +62,14 @@ const HotelList = () => {
               <span
                 className="date_picker_span"
                 onClick={() => setShowDatePicker(!showDatePicker)}
-              >{`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(
-                date[0].endDate,
+              >{`${format(dates[0].startDate, "MM/dd/yyyy")} to ${format(
+                dates[0].endDate,
                 "MM/dd/yyyy"
               )}`}</span>
 
               {showDatePicker && (
                 <DateRange
-                  onChange={(item) => setDate([item.section])}
+                  onChange={(item) => setDates([item.section])}
                   minDate={new Date()}
                 />
               )}
